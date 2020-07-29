@@ -1,0 +1,20 @@
+$theme-colors: (
+    'primary': #0091ea //Covalence Blue!  :D
+);
+
+.grid {
+    width: 640px;
+}
+
+.box{
+    height: 60px;
+    width: 60px;
+    margin: 2px;
+    float: left;
+    
+    // inner shodow
+    -webkit-box-shadow: inset 1px 1px 5px #333;
+    -moz-box-shadow:    inset 1px 1px 5px #333;
+    box-shadow:         inset 1px 1px 5px #333;
+  }
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
