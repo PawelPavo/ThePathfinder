@@ -15,6 +15,9 @@ var mapData = [
 	1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
 	1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
 	1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
 ]
 
 // let winningTiles = []
@@ -24,8 +27,8 @@ var mapData = [
 // console.log(winningTiles)
 
 let arrayOfArrays = []
-for (let step = 10; step < mapData.length +1; step = step + 10) {
-	arrayOfArrays.push(mapData.slice(step - 10, step))
+for (let step = 0; step < mapData.length + 1; step = step + 10) {
+	arrayOfArrays.push(mapData.slice(step, mapData.length))
 }
 console.log(arrayOfArrays)
 
@@ -33,14 +36,14 @@ console.log(arrayOfArrays)
 const App: React.FC<IAppProps> = () => {
 
 	const [totalClicks, setTotalCliks] = useState(0)
-	const [rowIndex, setRowIndex] = useState(9)
+	const [rowIndex, setRowIndex] = useState(0)
 
 	const restartClick = () => {
 		window.location.reload();
 	}
 
 	const handleCorrectClick = (e) => {
-		setRowIndex(rowIndex-1)
+		setRowIndex(rowIndex + 1)
 		//========================
 		// var x = document.getElementById("myId").querySelectorAll(".box");
 		// var res = (x[95].innerHTML = '2')
@@ -68,10 +71,16 @@ const App: React.FC<IAppProps> = () => {
 		// 	}
 		// })
 	}
+	const[color, setColor] = useState('primary')
 	const handleInorrectClick = () => {
 		console.log('Wrong')
 		setTotalCliks(totalClicks + 1)
-		
+		setRowIndex(0)
+		setColor('danger')
+        setTimeout(function () {
+            setColor('primary')
+        }, 100);
+
 	}
 
 	function GamePlay(props: any) {
@@ -87,7 +96,7 @@ const App: React.FC<IAppProps> = () => {
 			return (
 				<div
 					onClick={handleInorrectClick}
-					className="box btn-primary rounded">
+					className={`box btn-${color} rounded`}>
 				</div>
 			)
 		}
@@ -111,6 +120,7 @@ const App: React.FC<IAppProps> = () => {
 							<GamePlay key={Math.random()} tile={tile} />
 						))}
 					</div>
+
 				</div>
 			</div>
 		</>
