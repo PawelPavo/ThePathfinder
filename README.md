@@ -1,17 +1,19 @@
-# Barebones React/TypeScript/Express/Sass Boilerplate
-This project is a starting point for a TypeScript based React app that also has a local API server using express.
+# The Pathfinder
 
-There are 2 different Webpack configurations. One for the server and one for the client.
+## The objective:
+The objective of the game is very simple. Find the path to the top by clicking the squares.
 
-## Server
-The server build process compiles the TypeScript files found in `/src/server` into a single bundled JavaScript file located in the `/dist` directory.
+## The Rules:
 
-## Client
-The client build process compiles the React app located in `/src/client` into a bundled located at `/public/js/app.js`.
+- To start the game, find an arrow which marks the first correct square.
+- Each correct square is touching one another either by a corner or a side - forming a path.
+- Now, you must find the path to the top by correctly guessing the next square in the row above.
+- The correct squares will change color to GREEN,  while incorrect squares will flash RED.
+- ... one more thing
+- Every time you click the incorrect square, the path will reset, so I hope you are lucky and have outstanding memory.
 
-The client configuration will also build the Sass files found at `/src/client/scss`. The App component imports the `app.scss` file which already includes an import for Bootstrap.
+Enjoy and may luck be ever in your favor!
 
-## Running the project
-In order to run the server, use `npm run dev`, and the server will start on port 3000 (http://localhost:3000). 
 
-Webpack will watch the files. Once you save a file, you can refresh your browser to ensure you got the updated client files. If you only change server files, you *shouldn't* need to refresh.
+
+

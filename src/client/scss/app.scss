@@ -17,4 +17,17 @@ $theme-colors: (
     -moz-box-shadow:    inset 1px 1px 5px #333;
     box-shadow:         inset 1px 1px 5px #333;
   }
+
+  .box2{
+    height: 60px;
+    width: 60px;
+    margin: 2px;
+    float: left;
+    background-color: 'green';
+    
+    // inner shodow
+    -webkit-box-shadow: inset 1px 1px 5px #333;
+    -moz-box-shadow:    inset 1px 1px 5px #333;
+    box-shadow:         inset 1px 1px 5px #333;
+  }
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
