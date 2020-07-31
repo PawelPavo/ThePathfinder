@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
-import e from 'express';
 
 var mapData = [
 	1, 1, 1, 1, 1, 1, 0, 1, 1, 1,
@@ -28,7 +27,7 @@ var mapData = [
 
 let arrayOfArrays = []
 for (let step = 0; step < mapData.length + 1; step = step + 10) {
-	arrayOfArrays.push(mapData.slice(step, mapData.length))
+	arrayOfArrays.push(mapData.slice(step, mapData.length + 1))
 }
 console.log(arrayOfArrays)
 
@@ -36,14 +35,38 @@ console.log(arrayOfArrays)
 const App: React.FC<IAppProps> = () => {
 
 	const [totalClicks, setTotalCliks] = useState(0)
-	const [rowIndex, setRowIndex] = useState(0)
+	const [rowIndex, setRowIndex] = useState(12)
 
 	const restartClick = () => {
 		window.location.reload();
 	}
 
-	const handleCorrectClick = (e) => {
-		setRowIndex(rowIndex + 1)
+	const [correctColor, setCorrectColor] = useState('primary')
+
+	const handleCorrectClick = () => {
+		setTimeout(() => {
+			setRowIndex(rowIndex - 1)
+		}, 250)
+
+		setCorrectColor('success')
+		setTimeout(function () {
+			setCorrectColor('primary')
+		}, 100);
+		if (rowIndex == 0) {
+			setRowIndex(12)
+			Swal.fire<unknown>({
+				title: 'SO LUCKY!',
+				text: 'You found the path...',
+				imageUrl: 'https://news-api.s3.us-east-2.amazonaws.com/1595527001268.jpg',
+				imageWidth: 300,
+				imageHeight: 200,
+				imageAlt: 'Custom image',
+				timer: 5000,
+				onClose: () => {
+					restartClick()
+				}
+			})
+		}
 		//========================
 		// var x = document.getElementById("myId").querySelectorAll(".box");
 		// var res = (x[95].innerHTML = '2')
@@ -58,29 +81,16 @@ const App: React.FC<IAppProps> = () => {
 		console.log('correct')
 		// steCorrectPathColor('green')
 		setTotalCliks(totalClicks + 1)
-		// Swal.fire<unknown>({
-		// 	title: 'SO LUCKY!',
-		// 	text: 'You found the path...',
-		// 	imageUrl: 'https://news-api.s3.us-east-2.amazonaws.com/1595527001268.jpg',
-		// 	imageWidth: 300,
-		// 	imageHeight: 200,
-		// 	imageAlt: 'Custom image',
-		// 	timer: 5000,
-		// 	onClose: () => {
-		// 		restartClick()
-		// 	}
-		// })
 	}
-	const[color, setColor] = useState('primary')
+	const [color, setColor] = useState('primary')
 	const handleInorrectClick = () => {
 		console.log('Wrong')
 		setTotalCliks(totalClicks + 1)
-		setRowIndex(0)
+		setRowIndex(12)
 		setColor('danger')
-        setTimeout(function () {
-            setColor('primary')
-        }, 100);
-
+		setTimeout(function () {
+			setColor('primary')
+		}, 100);
 	}
 
 	function GamePlay(props: any) {
@@ -88,8 +98,7 @@ const App: React.FC<IAppProps> = () => {
 			return (
 				<div
 					onClick={handleCorrectClick}
-					className='box btn-primary rounded'>
-					{props.tile}
+					className={`box btn-${correctColor} rounded`}>
 				</div >
 			)
 		} else {
@@ -115,12 +124,14 @@ const App: React.FC<IAppProps> = () => {
 					</h4>
 				</div>
 				<div className="row justify-content-center">
-					<div className="grid" id="myId">
-						{arrayOfArrays[rowIndex].map((tile) => (
-							<GamePlay key={Math.random()} tile={tile} />
-						))}
+				<div className="col-2 text-right display-4">&rarr;</div>
+					<div className="col-10">
+						<div className="grid" id="myId">
+							{arrayOfArrays[rowIndex].map((tile) => (
+								<GamePlay key={Math.random()} tile={tile} />
+							))}
+						</div>
 					</div>
-
 				</div>
 			</div>
 		</>
