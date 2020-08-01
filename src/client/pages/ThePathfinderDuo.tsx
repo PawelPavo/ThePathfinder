@@ -82,7 +82,6 @@ const ThePathfiderDuo = () => {
 };
 
 const Layout = styled.div`
-	background-color: #edf2f7;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;

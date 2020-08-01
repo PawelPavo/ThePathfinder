@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Tile from './Tile';
@@ -29,9 +31,10 @@ const GameRow = styled.div`
 	${({ gameRow, whichRow }) =>
 		gameRow === whichRow &&
 		`
-	background-color: #4fd1c5;
+	background-color: #ffbb00;
 	border: 1px solid #234e52;
 	border-radius: 5px;
+	
 `}
 `;
 

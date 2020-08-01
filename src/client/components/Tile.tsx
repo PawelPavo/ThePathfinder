@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -25,6 +25,9 @@ const Tile = ({ tile, rowDim, setRowDim, gameRow, whichRow, dispatch }) => {
 };
 
 const TileStyle = styled.div`
+-webkit-box-shadow: inset 1px 1px 5px #333;
+-moz-box-shadow:    inset 1px 1px 5px #333;
+box-shadow:         inset 1px 1px 5px #333;
 	border: 1.5px solid black;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -39,11 +42,11 @@ const TileStyle = styled.div`
 	${({ hitOrMiss }) => {
 		switch (hitOrMiss) {
 			case null:
-				return 'background-color: #2b6cb0;';
+				return 'background-color: #375e97;';
 			case 'right':
-				return 'background-color: #2f855a !important;';
+				return 'background-color: #3f681c !important;';
 			case 'wrong':
-				return 'background-color: #9b2c2c !important;';
+				return 'background-color: #8d230f !important;';
 		}
 	}}
 	${({ rowDim }) => rowDim && 'background-color: #4a5568;'}
