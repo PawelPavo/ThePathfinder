@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navigation from './components/Navigation'
 import Pathfinder from './pages/ThePathfinder'
 import PathfinderDue from './pages/ThePathfinderDuo'
+import Home from './pages/Home';
 
 const App: React.FC<IAppProps> = () => {
 
@@ -12,7 +13,7 @@ const App: React.FC<IAppProps> = () => {
 			<Navigation />
 			<Switch>
 				<Route exact path="/">
-					{/* <Home /> */}
+					<Home />
 				</Route>
 				<Route exact path="/pathfinder">
 					<Pathfinder />
