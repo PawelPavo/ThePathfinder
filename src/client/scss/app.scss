@@ -18,4 +18,37 @@ $theme-colors: (
     box-shadow:         inset 1px 1px 5px #333;
   }
 
+  .chat-input-card{
+     background-color: #54678F !important;
+  }
+
+  .chat-output-card {
+      min-width: auto;
+      min-height: 600px;
+      background-color: #f1f0f1 !important;
+  }
+
+  .chat-button {
+    background-color: #9199BE !important;
+  }
+  .chat-button:hover {
+    background-color:rgba(212, 207, 207, 0.2) !important;
+    box-shadow: 0 5px 15px rgba(33,33,33,.2);
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  .chat-msg {
+    background-color: #9199BE !important;
+    color: #FFFFFF !important;
+
+  }
+
+  .chat-username {
+    color: #2E303E !important;
+
+  }
+
+
+
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';

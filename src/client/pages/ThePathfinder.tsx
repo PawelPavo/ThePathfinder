@@ -27,7 +27,7 @@ let arrayOfArrays = []
 for (let step = 0; step < mapData.length + 1; step = step + 10) {
 	arrayOfArrays.push(mapData.slice(step, mapData.length + 1))
 }
-console.log(arrayOfArrays)
+// console.log(arrayOfArrays)
 
 
 const ThePathfinder: React.FC<IThePathfinderProps> = () => {

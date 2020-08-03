@@ -35,7 +35,7 @@ export const makeGrid = ({ rows, cols }) => {
 		}
 	}
 
-	console.log(grid);
+	// console.log(grid);
 
 	return grid;
 };

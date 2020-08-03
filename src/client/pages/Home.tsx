@@ -32,46 +32,49 @@ const Home: React.FC<IHomeProps> = () => {
     return (
         <>
             <div className="container">
-                <div className="row justify-content-center text-monospace">
-                    <h1>Chat</h1>
+                <div className="row justify-content-center text-monospace mb-5">
+                    <h1>HOME</h1>
                 </div>
-                <div className="row justify-content-center text-monospace">
-                    <div className="col-4 text-center">CHAT
-                    <div >
-                            {chat.map((chat) => (
-                                <>
-                                    <small className="">{chat.message.username} says:
-                                        <h5 className="text-success">{chat.message.msg}</h5>
-                                    </small>
-                                </>
-                            ))}
+                <div className="row justify-content-center">
+                    <div className="col-md-6 my-auto">
+                        <div className="card text-center p-3 chat-input-card">
+                            <div className="input-group">
+                                <input
+                                    placeholder="Your username..."
+                                    value={message.username}
+                                    onChange={e => setMessage({ ...message, username: e.target.value })}
+                                    type="text"
+                                    className="form-control"
+                                />
+                            </div>
+                            <div className="input-group my-3">
+                                <input
+                                    placeholder="Your messgae..."
+                                    value={message.msg}
+                                    onChange={e => setMessage({ ...message, msg: e.target.value })}
+                                    type="text"
+                                    className="form-control"
+                                />
+                            </div>
+                            <div className="text-center">
+                                <button
+                                    onClick={onSubmit}
+                                    className="btn chat-button">Submit
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-6">
-                        <div className="input-group">
-                            <input
-                                placeholder="Your username..."
-                                value={message.username}
-                                onChange={e => setMessage({...message, username: e.target.value })}
-                                type="text"
-                                className="form-control"
-                            />
-                        </div>
-                        <div className="input-group">
-                            <input
-                                placeholder="Your messgae..."
-                                value={message.msg}
-                                onChange={e => setMessage({ ...message, msg: e.target.value })}
-                                type="text"
-                                className="form-control"
-                            />
-                        </div>
-                        <button
-                            onClick={onSubmit}
-                            className="btn btn-outline-primary btn-lg btn-block w-50 mt-3">Send</button>
+                    <div className=" card col-md-6 text-center chat-output-card">
+                        {chat.map((chat) => (
+                            <div key={Math.random()} className="row p-2 my-1">
+                                <div className="col-4 text-right font-weight-light my-auto chat-username">{chat.message.username}</div>
+                                <div className="col-6 border font-weight-light rounded-pill chat-msg shadow p-2">{chat.message.msg}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
+
         </>
     )
 }
