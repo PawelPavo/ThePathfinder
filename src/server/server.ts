@@ -5,6 +5,7 @@ import apiRouter from './routes';
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const names = []
 
 app.use(express.static('public'));
 app.use(apiRouter);
@@ -13,7 +14,7 @@ io.on("connection", socket => {
   const { id } = socket.client;
   console.log(`USER - ${id} - connected`);
   socket.on("Chat message", message => {
-    // console.log(`${message.username}: ${message.msg} `)
+    console.log(`${message.username}: ${message.msg} - id: ${id}`)
     io.emit("Chat message", message);
   });
 
@@ -23,5 +24,3 @@ io.on("connection", socket => {
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => console.log(`Server listening on port: ${port}`));
-
-

@@ -19,7 +19,7 @@ $theme-colors: (
   }
 
   .chat-input-card{
-     background-color: #54678F !important;
+     background-color: #9199BE !important;
   }
 
   .chat-output-card {
@@ -29,7 +29,8 @@ $theme-colors: (
   }
 
   .chat-button {
-    background-color: #9199BE !important;
+    background-color: #2E303E !important;
+    color: #f1f0f1 !important;
   }
   .chat-button:hover {
     background-color:rgba(212, 207, 207, 0.2) !important;
@@ -49,6 +50,9 @@ $theme-colors: (
 
   }
 
+  .chat-date {
+    font-size: x-small;
+  }
 
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';

@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar: React.FC<INavBar> = () => {
     return(
-        <section className="row my-2">
-            <div className="col-12">
+        
+            <div className="col">
                 <nav className="nav justify-content-around p-3 border-bottom border-secondary">
                     <NavLink exact to="/">Home</NavLink>
                     <NavLink exact to="/pathfinder">The Pathinder</NavLink>
@@ -14,7 +14,7 @@ const NavBar: React.FC<INavBar> = () => {
                     <NavLink exact to="/login">Login</NavLink>
                 </nav>
             </div>
-        </section>
+        
     );
 };
 

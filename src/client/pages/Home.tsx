@@ -1,7 +1,7 @@
 import * as React from 'react';
 import io from "socket.io-client";
 import { useState, useEffect } from 'react';
-import e from 'express';
+import moment from 'moment';
 
 const socket = io.connect("http://localhost:3000");
 
@@ -35,6 +35,7 @@ const Home: React.FC<IHomeProps> = () => {
                 <div className="row justify-content-center text-monospace mb-5">
                     <h1>HOME</h1>
                 </div>
+                <div></div>
                 <div className="row justify-content-center">
                     <div className="col-md-6 my-auto">
                         <div className="card text-center p-3 chat-input-card">
@@ -67,8 +68,11 @@ const Home: React.FC<IHomeProps> = () => {
                     <div className=" card col-md-6 text-center chat-output-card">
                         {chat.map((chat) => (
                             <div key={Math.random()} className="row p-2 my-1">
-                                <div className="col-4 text-right font-weight-light my-auto chat-username">{chat.message.username}</div>
-                                <div className="col-6 border font-weight-light rounded-pill chat-msg shadow p-2">{chat.message.msg}</div>
+                                <div className="col-4 text-right font-weight-light my-auto chat-username ">{chat.message.username}:</div>
+                                <div className="col-6 border font-weight-light rounded-pill chat-msg shadow p-1">{chat.message.msg}
+                                    <br />
+                                    <div className="text-muted chat-date">{moment().calendar()}</div>
+                                </div>
                             </div>
                         ))}
                     </div>
